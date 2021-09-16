@@ -3,6 +3,13 @@
         <title>ABOUT ME
         </title>
     </head>
+    <style>
+        table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        }
+    </style>
     <body>
         <h1>anusha sunketa
         </h1>
@@ -12,6 +19,122 @@
 <p> Hyderabad is a city in the Indian state of Telangana.
     Its <b>charminar </b> Its situated near the old city with <b>shopping stalls</b>.
     It's very <b>important</b> to visit the charminar.
-</p>
+</p>  
+<hr>
+
+<h4> Route Map to my favourite place</h4>
+
+<ol>
+    <li> Go to the MCI aiport, Kansas city.</li>
+    <li> Board a flight to RGIA,Hyderabad.
+<ol>
+    <li> Book a cab from airport to old city.</li>
+    <li> Enjoy the Shopping at charminar.</li>
+</ol>
+</li>
+</ol>
+
+<ul>
+    <li>Bring a dslr </li>
+    <li> mobile phone</li>
+    <li> Credit cardgit </li>
+</ul>
+
+<a href="aboutme.html ">aboutme file</a>
+
+<hr>
+
+<h3> Recommeneded Drinks</h3>
+
+The below table shows the recommended drinks and their available location and purchase value.
+
+<table>
+    <tr>
+    <th>Drinks</th>
+    <th>Location</th>
+    <th>Price(INR)</th>
+    </tr>
+    
+    <tr>
+        <td>sprite</td>
+        <td>hyderabad</td>
+        <td>30</td>
+    </tr>
+    
+    <tr>
+    <td>thickshake</td>
+    <td>gujarat</td>
+    <td>80</td>
+    </tr>
+    
+    <tr>
+    <td>thums up</td>
+    <td>mumbai</td>
+    <td>70</td>
+    </tr>
+    
+    <tr>
+    <td>fanta</td>
+    <td>chennai</td>
+    <td>50</td>
+    </tr>
+    
+    </table>
+
+    <hr>
+
+    <h4> Sweepline </h4>
+    <blockquote cite = "https://en.wikipedia.org/wiki/Sweep_line_algorithm">In computational geometry, a sweep line algorithm or plane sweep algorithm is an algorithmic paradigm that uses a conceptual sweep line or sweep surface to solve various problems in Euclidean space. It is one of the key techniques in computational geometry.</blockquote>
+    <a href = "https://en.wikipedia.org/wiki/Sweep_line_algorithme"> Sweepline </a>
+    <pre>
+    
+        typedef long long ll;
+
+        bool ge(const ll& a, const ll& b) { return a >= b; }
+        bool le(const ll& a, const ll& b) { return a <= b; }
+        bool eq(const ll& a, const ll& b) { return a == b; }
+        bool gt(const ll& a, const ll& b) { return a > b; }
+        bool lt(const ll& a, const ll& b) { return a < b; }
+        int sgn(const ll& x) { return le(x, 0) ? eq(x, 0) ? 0 : -1 : 1; }
+        
+        struct pt {
+            ll x, y;
+            pt() {}
+            pt(ll _x, ll _y) : x(_x), y(_y) {}
+            pt operator-(const pt& a) const { return pt(x - a.x, y - a.y); }
+            ll dot(const pt& a) const { return x * a.x + y * a.y; }
+            ll dot(const pt& a, const pt& b) const { return (a - *this).dot(b - *this); }
+            ll cross(const pt& a) const { return x * a.y - y * a.x; }
+            ll cross(const pt& a, const pt& b) const { return (a - *this).cross(b - *this); }
+            bool operator==(const pt& a) const { return a.x == x && a.y == y; }
+        };
+        
+        struct Edge {
+            pt l, r;
+        };
+        
+        bool edge_cmp(Edge* edge1, Edge* edge2)
+        {
+            const pt a = edge1->l, b = edge1->r;
+            const pt c = edge2->l, d = edge2->r;
+            int val = sgn(a.cross(b, c)) + sgn(a.cross(b, d));
+            if (val != 0)
+                return val > 0;
+            val = sgn(c.cross(d, a)) + sgn(c.cross(d, b));
+            return val < 0;
+        }
+        
+        enum EventType { DEL = 2, ADD = 3, GET = 1, VERT = 0 };
+        
+        struct Event {
+            EventType type;
+            int pos;
+            bool operator<(const Event& event) const { return type < event.type; }
+        };
+        
+
+    </pre>
+
+
     </body>
 </html>
